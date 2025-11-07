@@ -11,7 +11,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -19,7 +19,28 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon=""
+            app:navigationIcon="@drawable/ic_logo"
+            android:paddingTop="40dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Criar Conta"
+                android:textColor="@color/white"
+                android:layout_gravity="center_horizontal"
+                />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearLayout2"
+            android:orientation="vertical"
+            >
+
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,28 +81,16 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/bg_btn"
             />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
-
-
-
-        </LinearLayout>
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:indeterminateTint="@color/white"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:visibility="invisible"
+            tools:visibility="visible"
+            />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/linearLayout2">
-
     </LinearLayout>
-
 </ScrollView>
