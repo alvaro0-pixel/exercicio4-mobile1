@@ -8,8 +8,7 @@ import android.view.ViewGroup
 import com.example.exercicio4.R
 import com.example.exercicio4.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment() {
-
+class DoneFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
