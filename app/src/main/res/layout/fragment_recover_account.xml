@@ -14,10 +14,11 @@
         android:orientation="vertical"
         android:layout_marginHorizontal="25dp">
 
+
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/logoutic"
+            app:navigationIcon="@drawable/ic_logout"
             android:paddingTop="40dp"
             >
 

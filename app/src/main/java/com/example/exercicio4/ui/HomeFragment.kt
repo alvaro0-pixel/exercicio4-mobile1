@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.exercicio4.R
 import com.example.exercicio4.databinding.FragmentHomeBinding
+import com.example.exercicio4.ui.adapter.ViewPagerAdapter
 
 class HomeFragment : Fragment() {
 
@@ -20,6 +21,22 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        initTabs()
+    }
+
+    private fun initTabs() {
+        val pageAdapter = ViewPagerAdapter(requireActivity())
+        binding.viewPager.adapter = pageAdapter
+        pageAdapter.addFragment(TodoFragment(), R.string.status_task_todo)
+        pageAdapter.addFragment(TodoFragment(), R.string.status_task_doing)
+        pageAdapter.addFragment(TodoFragment(), R.string.status_task_done)
+
+        binding.viewPager.offscreenPageLimit = pageAdapter.itemCount
     }
 
 
