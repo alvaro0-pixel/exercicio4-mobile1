@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.exercicio4.R
-import com.example.exercicio4.databinding.FragmentHomeBinding
+import com.example.exercicio4.databinding.FragmentTodoBinding
+
 
 class TodoFragment : Fragment() {
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentTodoBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -17,10 +19,20 @@ class TodoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentTodoBinding.inflate(inflater, container, false)
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initListeners()
+    }
+
+    private fun initListeners() {
+        binding.floatingActionButton2.setOnClickListener {
+            findNavController().navigate((R.id.action_homeFragment_to_formTaskFragment))
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

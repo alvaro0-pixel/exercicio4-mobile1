@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.exercicio4.R
 import com.example.exercicio4.databinding.FragmentRegisterBinding
+import com.example.exercicio4.util.initToolbar
 
 
 class RegisterFragment : Fragment() {
@@ -22,6 +23,11 @@ class RegisterFragment : Fragment() {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
         return binding.root
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initToolbar(binding.toolbar)
     }
 
     override fun onDestroyView() {
