@@ -14,8 +14,9 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:navigationIcon="@drawable/ic_logout"
+            app:navigationIcon="@drawable/ic_arrow"
             android:paddingTop="40dp"
+            android:id="@+id/toolbar"
             >
 
         <TextView
@@ -76,7 +77,8 @@
                 android:id="@+id/rbTodo"
                 android:text="A Fazer"
                 android:theme="@style/MyRadioButton"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:checked="true"/>
 
             <RadioButton
                 android:layout_width="88dp"
