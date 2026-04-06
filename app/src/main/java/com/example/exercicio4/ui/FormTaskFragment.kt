@@ -10,6 +10,7 @@ import com.example.exercicio4.R
 import com.example.exercicio4.databinding.FragmentFormTaskBinding
 import com.example.exercicio4.databinding.FragmentLoginBinding
 import com.example.exercicio4.util.initToolbar
+import com.example.exercicio4.util.showBottomSheet
 
 class FormTaskFragment : Fragment() {
     private var _binding:  FragmentFormTaskBinding? = null
@@ -41,7 +42,7 @@ class FormTaskFragment : Fragment() {
         if (description.isNotBlank()) {
             Toast.makeText(requireContext(), "Tudo OK!", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(requireContext(), "Preencha uma descrição!", Toast.LENGTH_SHORT).show()
+            showBottomSheet(message = getString(R.string.description_empty_form_task_fragment))
         }
     }
 

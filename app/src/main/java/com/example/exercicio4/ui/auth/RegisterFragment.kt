@@ -46,10 +46,10 @@ class RegisterFragment : Fragment() {
             if (senha.isNotBlank()) {
                 findNavController().navigate(R.id.action_global_homeFragment)
             } else {
-                Toast.makeText(requireContext(), "Preencha a senha!", Toast. LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), R.string.password_empty_register_fragment, Toast. LENGTH_SHORT).show()
             }
         } else {
-            Toast.makeText(requireContext(), "Preencha seu email!", Toast. LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), R.string.email_empty_register_fragment, Toast. LENGTH_SHORT).show()
         }
     }
 
