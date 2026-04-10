@@ -34,7 +34,8 @@ class TodoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
 
-        initRecyclerViewTask(getTask())
+        initRecyclerViewTask()
+        getTask()
     }
 
     private fun initListeners() {
@@ -43,15 +44,21 @@ class TodoFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViewTask(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(requireContext(), taskList) { task, option -> optionSelected(task, option) }
-        binding.recyclerViewTask.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewTask.setHasFixedSize(true)
-        binding.recyclerViewTask.adapter = taskAdapter
+    private fun initRecyclerViewTask() {
+        taskAdapter = TaskAdapter(requireContext()) { task, option -> optionSelected(task, option) }
+
+        with(binding.recyclerViewTask){
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
+        }
     }
 
     private fun optionSelected(task: Task, option: Int){
         when (option) {
+            TaskAdapter.SELECT_BACK -> {
+                Toast.makeText(requireContext(), "Anterior", Toast.LENGTH_SHORT).show()
+            }
             TaskAdapter.SELECT_REMOVER -> {
                 Toast.makeText(requireContext(), "Removendo ${task.description}", Toast.LENGTH_SHORT).show()
             }
@@ -67,13 +74,16 @@ class TodoFragment : Fragment() {
         }
     }
 
-    private fun getTask() = listOf(
-        Task("0", "Criar nova tela do app", Status.TODO),
-        Task("1", "Validar informações na tela de login", Status.TODO),
-        Task("2", "Adicionar nova funcionalidade no app", Status.TODO),
-        Task("3", "Salvar token Localmente", Status.TODO),
-        Task("2", "Criar funcionalidade de logout no app", Status.TODO),
-    )
+    private fun getTask() {
+        val taskList = listOf(
+            Task("0", "Criar nova tela do app", Status.TODO),
+            Task("1", "Validar informações na tela de login", Status.TODO),
+            Task("2", "Adicionar nova funcionalidade no app", Status.TODO),
+            Task("3", "Salvar token Localmente", Status.TODO),
+            Task("4", "Criar funcionalidade de logout no app", Status.TODO)
+        )
+        taskAdapter.submitList(taskList)
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

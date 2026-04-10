@@ -32,12 +32,23 @@ class DoneFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initListeners()
 
-        initRecyclerViewTask(getTask())
+        initRecyclerViewTask()
+        getTask()
     }
 
     private fun initListeners() {
         binding.floatingActionButton2.setOnClickListener {
             findNavController().navigate((R.id.action_homeFragment_to_formTaskFragment))
+        }
+    }
+
+    private fun initRecyclerViewTask() {
+        taskAdapter = TaskAdapter(requireContext()) { task, option -> optionSelected(task, option) }
+
+        with(binding.recyclerViewTask){
+            layoutManager = LinearLayoutManager(requireContext())
+            setHasFixedSize(true)
+            adapter = taskAdapter
         }
     }
 
@@ -58,20 +69,16 @@ class DoneFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerViewTask(taskList: List<Task>) {
-        taskAdapter = TaskAdapter(requireContext(), taskList) { task, option -> optionSelected(task, option) }
-        binding.recyclerViewTask.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerViewTask.setHasFixedSize(true)
-        binding.recyclerViewTask.adapter = taskAdapter
+    private fun getTask() {
+        val taskList = listOf(
+            Task("0", "Criar nova tela do app", Status.DONE),
+            Task("1", "Validar informações na tela de login", Status.DONE),
+            Task("2", "Adicionar nova funcionalidade no app", Status.DONE),
+            Task("3", "Salvar token Localmente", Status.DONE),
+            Task("4", "Criar funcionalidade de logout no app", Status.DONE)
+        )
+        taskAdapter.submitList(taskList)
     }
-
-    private fun getTask() = listOf(
-        Task("0", "Criar nova tela do app", Status.DONE),
-        Task("1", "Validar informações na tela de login", Status.DONE),
-        Task("2", "Adicionar nova funcionalidade no app", Status.DONE),
-        Task("3", "Salvar token Localmente", Status.DONE),
-        Task("2", "Criar funcionalidade de logout no app", Status.DONE),
-    )
 
     override fun onDestroyView() {
         super.onDestroyView()
