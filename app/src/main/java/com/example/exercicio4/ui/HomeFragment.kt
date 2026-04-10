@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.example.exercicio4.R
 import com.example.exercicio4.databinding.FragmentHomeBinding
 import com.example.exercicio4.ui.adapter.ViewPagerAdapter
+import com.google.android.material.tabs.TabLayoutMediator
 
 class HomeFragment : Fragment() {
 
@@ -37,6 +38,10 @@ class HomeFragment : Fragment() {
         pageAdapter.addFragment(TodoFragment(), R.string.status_task_done)
 
         binding.viewPager.offscreenPageLimit = pageAdapter.itemCount
+
+        TabLayoutMediator(binding.tabs, binding.viewPager){tab, position ->
+            tab.text = getString(pageAdapter.getTitle(position))
+        }.attach()
     }
 
 

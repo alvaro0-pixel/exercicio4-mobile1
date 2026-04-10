@@ -3,7 +3,11 @@
     <color name="black">#141313</color>
     <color name="white">#F4F0F0</color>
     <color name="green">#37FF00</color>
+
     <color name="color_default">#1C89D3</color>
     <color name="color_delete">#DB1616</color>
     <color name="color_details">#8BE4DD</color>
+
+    <color name="color_status_todo">#FF841A</color>
+    <color name="color_status_done">#04D5C1</color>
 </resources>
